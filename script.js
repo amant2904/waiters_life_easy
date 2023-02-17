@@ -1,5 +1,5 @@
 // main api url
-let api_url = "https://crudcrud.com/api/5e87b0a7442d453fac79a5ee3381f22a/orders"
+let api_url = "https://crudcrud.com/api/425338674cdc4fb7b7110d774c1740ab/orders"
 
 // show data in UI
 function showDataInUI(obj) {
@@ -26,7 +26,7 @@ function showDataInUI(obj) {
 
     // append order id in table data
     td_4.append(document.createTextNode(obj._id));
-    td_4.hidden = true;
+    // td_4.hidden = true;
 
     // append table data in table row
     t_row.append(td_1, td_2, td_3, td_4);
@@ -189,17 +189,16 @@ window.addEventListener("DOMContentLoaded", async () => {
 // submit button working
 document.getElementById("submit_btn").addEventListener("click", async (e) => {
     e.preventDefault();
-    let obj = {
-        price: document.getElementById("price").value,
-        dish: document.getElementById("dish").value,
-        table_no: document.getElementById("table_list").value
-    }
-
-    let options = {
-        method: "post",
-        data: obj
-    }
     try {
+        let obj = {
+            price: document.getElementById("price").value,
+            dish: document.getElementById("dish").value,
+            table_no: document.getElementById("table_list").value
+        }
+        let options = {
+            method: "post",
+            data: obj
+        }
         await axios(api_url, options);
         showDataInUI(obj);
     }
